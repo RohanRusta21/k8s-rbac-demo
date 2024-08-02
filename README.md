@@ -46,3 +46,23 @@ kubectl certificate approve tom
 - approve: This subcommand is used to approve a pending certificate signing request (CSR).
 - tom: The name of the CSR that you want to approve.
 
+```bash
+kubectl get csr tom -o jsonpath='{.status.certificate}' | base64 --decode > tom.crt
+```
+
+- kubectl get csr tom -o jsonpath='{.status.certificate}':
+
+    kubectl get csr tom: Fetches the CSR named tom.
+    -o jsonpath='{.status.certificate}': Outputs the status of the CSR in a JSONPath format, specifically extracting the certificate field from the status.
+
+- |: This pipe operator passes the output of the previous command to the next command.
+
+- base64 --decode:
+
+    base64: Command-line tool to encode/decode data in base64 format.
+    --decode: Decodes the base64-encoded certificate.
+
+- > tom.crt:
+
+    >: Redirects the output to a file.
+    tom.crt: The name of the file where the decoded certificate will be saved.

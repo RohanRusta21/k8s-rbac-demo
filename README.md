@@ -29,13 +29,11 @@ openssl req -new -key tom.key -out tom.csr -subj "/CN=tom"
 cat tom.csr | base64 | tr -d '\n'
 ```
 
-```
-cat tom.csr: This part reads and outputs the contents of the tom.csr file.
-|: This is a pipe, used to pass the output of one command as input to the next command.
-base64: This command encodes the input (in this case, the contents of tom.csr) into base64 format.
-|: Another pipe to pass the output to the next command.
-tr -d '\n': This command removes all newline characters from the input.
-```
+- cat tom.csr: This part reads and outputs the contents of the tom.csr file.
+- |: This is a pipe, used to pass the output of one command as input to the next command.
+- base64: This command encodes the input (in this case, the contents of tom.csr) into base64 format.
+- |: Another pipe to pass the output to the next command.
+- tr -d '\n': This command removes all newline characters from the input.
 
 
 ```bash
@@ -43,9 +41,8 @@ kubectl apply -f csr.yaml
 kubectl certificate approve tom
 ```
 
-```
-kubectl: The Kubernetes command-line tool used to interact with the Kubernetes cluster.
-certificate: A Kubernetes resource type for managing certificate requests.
-approve: This subcommand is used to approve a pending certificate signing request (CSR).
-tom: The name of the CSR that you want to approve.
-```
+- kubectl: The Kubernetes command-line tool used to interact with the Kubernetes cluster.
+- certificate: A Kubernetes resource type for managing certificate requests.
+- approve: This subcommand is used to approve a pending certificate signing request (CSR).
+- tom: The name of the CSR that you want to approve.
+

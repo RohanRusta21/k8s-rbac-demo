@@ -38,3 +38,16 @@ base64: This command encodes the input (in this case, the contents of tom.csr) i
 |: Another pipe to pass the output to the next command.
 tr -d '\n': This command removes all newline characters from the input.
 ```
+
+
+```bash
+kubectl apply -f csr.yaml
+kubectl certificate approve tom
+```
+
+```
+kubectl: The Kubernetes command-line tool used to interact with the Kubernetes cluster.
+certificate: A Kubernetes resource type for managing certificate requests.
+approve: This subcommand is used to approve a pending certificate signing request (CSR).
+tom: The name of the CSR that you want to approve.
+```

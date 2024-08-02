@@ -75,4 +75,12 @@ kubectl config get-contexts
 kubectl config set-context tom-context --cluster=kubernetes --namespace=default --user=tom
 kubectl config use-context tom-context
 ```
+
+### Checking Permissions for User tom
+
+```bash
+kubectl auth can-i get pods --as=tom --namespace=default
+kubectl auth can-i watch pods --as=tom --namespace=default
+kubectl auth can-i list pods --as=tom --namespace=default
+```
     

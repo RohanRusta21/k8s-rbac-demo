@@ -25,3 +25,16 @@ req: This command is used for creating and processing certificate requests.
     /CN=tom: CN stands for Common Name, which typically represents the domain name or the name of the entity requesting the certificate. Here, it's set to tom.
     /O=group1: O stands for Organization, representing the organization to which the entity belongs. Here, it's set to group1.
 ```
+
+
+```bash
+cat tom.csr | base64 | tr -d '\n'
+```
+
+```
+cat tom.csr: This part reads and outputs the contents of the tom.csr file.
+|: This is a pipe, used to pass the output of one command as input to the next command.
+base64: This command encodes the input (in this case, the contents of tom.csr) into base64 format.
+|: Another pipe to pass the output to the next command.
+tr -d '\n': This command removes all newline characters from the input.
+```

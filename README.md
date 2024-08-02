@@ -66,3 +66,13 @@ kubectl get csr tom -o jsonpath='{.status.certificate}' | base64 --decode > tom.
 
     >: Redirects the output to a file.
     tom.crt: The name of the file where the decoded certificate will be saved.
+    
+# Setup Kubeconfig for new user
+
+```bash
+kubectl config set-credentials tom --client-certificate=tom.crt --client-key=tom.key
+kubectl config get-contexts
+kubectl config set-context tom-context --cluster=kubernetes --namespace=default --user=tom
+kubectl config use-context tom-context
+```
+    

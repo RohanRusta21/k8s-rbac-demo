@@ -92,6 +92,6 @@ TOKEN=$(kubectl get secret $SECRET_NAME --namespace=default -o jsonpath='{.data.
 ```
 
 ```bash
-kubectl auth can-i create pods --token=$TOKEN --namespace=default
-kubectl auth can-i delete pods --token=$TOKEN --namespace=default
+kubectl auth can-i create pods --as=system:serviceaccount:default:tom-sa
+kubectl auth can-i delete pods --as=system:serviceaccount:default:tom-sa
 ```

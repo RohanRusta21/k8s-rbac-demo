@@ -37,7 +37,7 @@ cat tom.csr | base64 | tr -d '\n'
 
 
 ```bash
-kubectl apply -f csr.yaml
+kubectl apply -f csr.yml
 kubectl certificate approve tom
 ```
 

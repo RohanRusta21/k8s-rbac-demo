@@ -83,4 +83,15 @@ kubectl auth can-i get pods --as=tom --namespace=default
 kubectl auth can-i watch pods --as=tom --namespace=default
 kubectl auth can-i list pods --as=tom --namespace=default
 ```
-    
+
+### Checking Permissions for Service Account tom-sa
+
+```bash
+SECRET_NAME=$(kubectl get sa tom-sa --namespace=default -o jsonpath='{.secrets[0].name}')
+TOKEN=$(kubectl get secret $SECRET_NAME --namespace=default -o jsonpath='{.data.token}' | base64 --decode)
+```
+
+```bash
+kubectl auth can-i create pods --token=$TOKEN --namespace=default
+kubectl auth can-i delete pods --token=$TOKEN --namespace=default
+```

@@ -67,7 +67,7 @@ kubectl get csr jerry -o jsonpath='{.status.certificate}' | base64 --decode > je
     >: Redirects the output to a file.
     jerry.crt: The name of the file where the decoded certificate will be saved.
     
-# Setup Kubeconfig for new user (Dont try here now)
+# Setup Kubeconfig for new user
 
 ```bash
 kubectl config set-credentials jerry --client-certificate=jerry.crt --client-key=jerry.key

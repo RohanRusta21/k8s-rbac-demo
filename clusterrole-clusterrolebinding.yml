@@ -24,9 +24,6 @@ subjects:
 - kind: User
   name: jerry
   apiGroup: rbac.authorization.k8s.io
-- kind: ServiceAccount
-  name: jerry-sa
-  namespace: default
 roleRef:
   kind: ClusterRole
   name: pod-reader
@@ -37,8 +34,9 @@ apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: manage-pods
 subjects:
-- kind: ServiceAccount
-  name: jerry-sa
+- kind: User
+  name: jerry
+  apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: ClusterRole
   name: pod-manager

@@ -1,50 +1,45 @@
-kind: Role
+kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  namespace: default
   name: pod-reader
 rules:
 - apiGroups: [""]
   resources: ["pods"]
   verbs: ["get", "watch", "list"]
 ---
-kind: Role
+kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  namespace: default
   name: pod-manager
 rules:
 - apiGroups: [""]
   resources: ["pods"]
   verbs: ["create"]
 ---
-kind: RoleBinding
+kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: read-pods
-  namespace: default
 subjects:
 - kind: User
-  name: tom
+  name: jerry
   apiGroup: rbac.authorization.k8s.io
 - kind: ServiceAccount
-  name: tom-sa
+  name: jerry-sa
   namespace: default
 roleRef:
-  kind: Role
+  kind: ClusterRole
   name: pod-reader
   apiGroup: rbac.authorization.k8s.io
 ---
-kind: RoleBinding
+kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: manage-pods
-  namespace: default
 subjects:
 - kind: ServiceAccount
-  name: tom-sa
-  namespace: default
+  name: jerry-sa
 roleRef:
-  kind: Role
+  kind: ClusterRole
   name: pod-manager
   apiGroup: rbac.authorization.k8s.io

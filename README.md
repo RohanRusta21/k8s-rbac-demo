@@ -84,3 +84,10 @@ kubectl auth can-i watch pods --as=jerry --namespace=default
 kubectl auth can-i list pods --as=jerry --namespace=default
 ```
 
+### Verify and test permissions
+
+```bash
+kubectl --kubeconfig=jerry.kubeconfig auth can-i create pods
+kubectl --kubeconfig=jerry.kubeconfig auth can-i list pods
+kubectl --kubeconfig=jerry.kubeconfig auth can-i get pods
+```

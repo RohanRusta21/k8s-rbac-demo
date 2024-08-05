@@ -76,15 +76,6 @@ kubectl config set-context jerry-context --cluster=kubernetes --namespace=defaul
 kubectl config use-context jerry-context
 ```
 
-### Create a dedicated kubeconfig for jerry
-
-```bash
-kubectl config set-credentials jerry --client-certificate=jerry.crt --client-key=jerry.key --kubeconfig=jerry.kubeconfig
-kubectl config set-context jerry-context --cluster=kubernetes --namespace=default --user=jerry --kubeconfig=jerry.kubeconfig
-kubectl config use-context jerry-context --kubeconfig=jerry.kubeconfig
-```
-
-
 ### Checking Permissions for User jerry
 
 ```bash
@@ -93,10 +84,3 @@ kubectl auth can-i watch pods --as=jerry --namespace=default
 kubectl auth can-i list pods --as=jerry --namespace=default
 ```
 
-### Verify and test permissions
-
-```bash
-kubectl --kubeconfig=jerry.kubeconfig auth can-i create pods
-kubectl --kubeconfig=jerry.kubeconfig auth can-i list pods
-kubectl --kubeconfig=jerry.kubeconfig auth can-i get pods
-```
